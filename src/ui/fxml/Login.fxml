@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import jfxtras.labs.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <children>
+      <Pane pickOnBounds="false" prefHeight="346.0" prefWidth="386.0">
+         <children>
+            <ImageView fitHeight="234.0" fitWidth="315.0" layoutX="37.0" layoutY="36.0" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/SimulatorP1.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="select1" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="229.0" layoutY="278.0" mnemonicParsing="false" onAction="#loginServer" prefHeight="40.0" prefWidth="105.0" text="Server" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="select2" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="55.0" layoutY="277.0" mnemonicParsing="false" onAction="#loginClient" prefHeight="40.0" prefWidth="105.0" text="Client" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="9.0" layoutY="325.0" pickOnBounds="false" text="© 2016 Igor Milosevic">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <padding>
+                  <Insets right="3.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

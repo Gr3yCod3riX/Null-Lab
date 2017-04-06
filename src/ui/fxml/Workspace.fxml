@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.*?>
+<?import org.controlsfx.control.*?>
+<?import jfxtras.labs.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="aPane" cacheHint="SPEED" cacheShape="false" centerShape="false" minHeight="600.0" onKeyTyped="#handleKeyEvent" pickOnBounds="false" prefHeight="640.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <TabPane fx:id="tabPane" minHeight="640.0" minWidth="750.0" pickOnBounds="false" prefHeight="640.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab closable="false" text="Simulator">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <ImageView fitHeight="415.0" fitWidth="800.0">
+                           <image>
+                              <Image url="@../resources/bin.jpg" />
+                           </image></ImageView>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="36.0" layoutX="239.0" layoutY="190.0" opacity="0.61" stroke="BLACK" strokeType="INSIDE" width="270.0" />
+                        <Slider fx:id="slNoise" cacheHint="SPEED" layoutX="152.0" layoutY="468.0" minorTickCount="1" onMouseDragged="#updateSlider" onMouseReleased="#updateSlider" orientation="VERTICAL" prefHeight="122.0" prefWidth="26.0" showTickMarks="true" />
+                        <Slider fx:id="slPacket" layoutX="61.0" layoutY="470.0" onMouseReleased="#updatePackets" orientation="VERTICAL" prefHeight="122.0" prefWidth="16.0" />
+                        <Pane layoutX="14.0" layoutY="76.0" prefHeight="262.0" prefWidth="228.0">
+                           <children>
+                              <ImageView fitHeight="267.0" fitWidth="187.0" layoutX="53.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/phone.png" />
+                                 </image>
+                              </ImageView>
+                              <TextArea fx:id="taSender" editable="false" layoutX="87.0" layoutY="31.0" prefHeight="170.0" prefWidth="120.0" promptText="Sender bits" text="&#10;" wrapText="true">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </TextArea>
+                              <TextField fx:id="tfSender" layoutX="87.0" layoutY="196.0" onAction="#sendMessage" prefHeight="28.0" prefWidth="120.0" promptText="Enter message here...">
+                                 <font>
+                                    <Font name="FreeSans" size="10.0" />
+                                 </font>
+                              </TextField>
+                              <Circle fx:id="circ" cacheHint="SPEED" fill="#f20b0b" layoutX="192.0" layoutY="19.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                           </children>
+                        </Pane>
+                        <Label fx:id="lbNoise" alignment="CENTER" layoutX="9.0" layoutY="354.0" prefHeight="43.0" prefWidth="693.0" text="Bit Error" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSent" layoutX="11.0" layoutY="432.0" text="Packets Sent" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="start" layoutX="215.0" layoutY="517.0" mnemonicParsing="false" onAction="#start" prefHeight="35.0" prefWidth="155.0" text="Start" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="lbErrors" layoutX="142.0" layoutY="432.0" text="Noise">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="496.0" layoutY="76.0" prefHeight="254.0" prefWidth="183.0" snapToPixel="false">
+                           <children>
+                              <ImageView fitHeight="267.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/phone.png" />
+                                 </image>
+                              </ImageView>
+                              <TextArea fx:id="taReceiver" layoutX="34.0" layoutY="26.0" prefHeight="172.0" prefWidth="120.0" promptText="Receiver bits" wrapText="true">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </TextArea>
+                              <TextField editable="false" layoutX="34.0" layoutY="196.0" prefHeight="28.0" prefWidth="120.0" />
+                           </children>
+                        </Pane>
+                        <ToggleButton fx:id="btnTrans" layoutX="215.0" layoutY="475.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" text="Toggle Simulator" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="lbPacket" layoutX="346.0" layoutY="577.0" text="Packets" visible="false">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Line fx:id="ln1" cache="true" disable="true" endX="100.0" layoutX="262.0" layoutY="213.0" smooth="false" startX="-100.0" strokeWidth="2.0" visible="false" AnchorPane.bottomAnchor="686.0" AnchorPane.topAnchor="213.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Group fx:id="gr" cacheHint="SPEED" depthTest="DISABLE" layoutX="290.0" layoutY="205.0" pickOnBounds="true">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Group>
+                        <ToggleButton fx:id="tbSimulator" layoutX="581.0" layoutY="428.0" mnemonicParsing="false" onAction="#toggleSimulator" prefHeight="63.0" prefWidth="150.0" text="Real-Time Mode" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Authentication">
+              <content>
+                <AnchorPane pickOnBounds="false">
+                     <children>
+                        <ImageView fitHeight="623.0" fitWidth="800.0" smooth="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../resources/whiteBackground.jpg" />
+                           </image></ImageView>
+                        <ImageView fx:id="imgClient" fitHeight="180.0" fitWidth="200.0" layoutX="32.0" layoutY="108.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/clientPC.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgServer" fitHeight="161.0" fitWidth="218.0" layoutX="10.0" layoutY="120.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/virtual-private-network.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="txtClientName" layoutX="74.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER" wrappingWidth="105.13671875">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtServerName" layoutX="54.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server" textAlignment="CENTER" wrappingWidth="105.13671875">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <VBox fx:id="vbClientComm" layoutX="54.0" layoutY="366.0">
+                           <children>
+                              <Button fx:id="btnGenCert" layoutX="50.0" layoutY="158.0" mnemonicParsing="false" onAction="#sign" prefHeight="35.0" prefWidth="155.0" text="Generate Certificate" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnSendCert" layoutX="51.0" layoutY="194.0" mnemonicParsing="false" onAction="#certToSend" prefHeight="35.0" prefWidth="155.0" text="Send Certificate" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnClientConn" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="363.0" mnemonicParsing="false" onAction="#callClientConnect" prefHeight="35.0" prefWidth="155.0" text="Connect" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnClientDisc" alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="363.0" mnemonicParsing="false" onAction="#callClientDisconnect" prefHeight="35.0" prefWidth="155.0" text="Disconnect" textAlignment="CENTER" wrapText="true">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="vbServerComm" layoutX="54.0" layoutY="365.0">
+                           <children>
+                              <Button fx:id="btnServerStart" alignment="CENTER" contentDisplay="CENTER" layoutX="469.0" layoutY="122.0" mnemonicParsing="false" onAction="#callServerStart" prefHeight="35.0" prefWidth="155.0" text="Start Server" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnVerifyCert" alignment="CENTER" contentDisplay="CENTER" layoutX="469.0" layoutY="174.0" mnemonicParsing="false" onAction="#verifyCertificate" prefHeight="35.0" prefWidth="155.0" text="Verify Certificates" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnSignAFile" mnemonicParsing="false" onAction="#fileToSign" prefHeight="35.0" prefWidth="155.0" text="Select a File" wrapText="true" />
+                           </children>
+                        </VBox>
+                        <Label fx:id="lbAuth" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="324.0" text="Not Authenticated" textAlignment="CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabRConnection" closable="false" text="Remote Connection">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #bfbfbf;">
+                     <children>
+                        <TextField fx:id="tfIpAdd" layoutX="148.0" layoutY="71.0" promptText="Remote IP Address" />
+                        <TextField fx:id="tfChatPort" layoutX="148.0" layoutY="113.0" promptText="Chat Port" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="75.0" text="Remote IP Address:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="117.0" prefHeight="17.0" prefWidth="101.0" text="Chat Port Number:" textAlignment="RIGHT" />
+                        <Button alignment="CENTER" layoutX="517.0" layoutY="54.0" mnemonicParsing="false" onAction="#saveConfig" prefHeight="65.0" prefWidth="155.0" text="Save Configuration" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="tfUName" layoutX="148.0" layoutY="29.0" promptText="Default Server/Client" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="32.0" layoutY="33.0" prefHeight="17.0" prefWidth="103.0" text="User Name:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="14.0" layoutY="161.0" prefHeight="17.0" prefWidth="122.0" text="Tansfer Port Number:" textAlignment="RIGHT" />
+                        <TextField fx:id="tfTransPort" layoutX="150.0" layoutY="157.0" promptText="Transfer Port" />
+                        <Button alignment="CENTER" cacheShape="false" centerShape="false" layoutX="517.0" layoutY="138.0" mnemonicParsing="false" onAction="#showConfig" prefHeight="40.0" prefWidth="155.0" text="Show Settings" textAlignment="CENTER" wrapText="true" />
+                        <VBox layoutX="353.0" layoutY="29.0" pickOnBounds="false" prefHeight="150.0" prefWidth="111.0">
+                           <children>
+                              <Label fx:id="lbUName" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="353.0" layoutY="33.0" pickOnBounds="false" scaleShape="false" text="Current Username" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="27.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="lbRIP" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="353.0" layoutY="75.0" pickOnBounds="false" scaleShape="false" text="Current Remote IP" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="27.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="lbChatPort" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="353.0" layoutY="117.0" pickOnBounds="false" prefHeight="17.0" prefWidth="99.0" scaleShape="false" text="Current Chat Port" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="27.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="lbTPort" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="353.0" layoutY="161.0" pickOnBounds="false" scaleShape="false" text="Current Transfer Port" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="27.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</AnchorPane>

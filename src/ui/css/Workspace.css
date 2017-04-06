@@ -1,0 +1,135 @@
+.root{
+	-fx-background-color: white;
+
+}
+
+
+.tab:selected .tab-label {
+	-fx-font-size: 12px;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #66daff;
+    -fx-border-color:rgba(0,16,35,0.5);
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+
+.label{
+	-fx-text-fill: black;
+     -fx-effect: dropshadow(three-pass-box, grey, 4, 0, 0, 0);         
+}
+
+
+
+
+
+.text-field {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+.background {
+    -fx-background-color: #1d1d1d;
+}
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+    -fx-text-fill: #66daff;
+}
+
+
+
+
+
+
+
+.toggle-button{
+	 -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.toggle-button:selected {
+	-fx-font-family: Consolas, monaco, monospace;
+    -fx-text-fill: #66daff;
+    -fx-base: transparent;
+    -fx-background: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-color: rgb(32,74,135);
+    -fx-effect: null;
+}
+.toggle-button:pressed, .toggle-button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.toggle-button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+
+
+.toggle-button:disabled, .toggle-button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.toggle-button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.toggle-button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+    -fx-text-fill: #66daff;
+}
+

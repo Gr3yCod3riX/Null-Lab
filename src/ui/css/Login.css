@@ -1,0 +1,45 @@
+.root{
+	-fx-background-color: white;
+	-fx-fill: white;
+}
+.Anchor-Pane{
+	-fx-background-color: white;
+} 
+.toggle-button:selected {
+	-fx-font-family: Consolas, monaco, monospace;
+    -fx-text-fill: rgb(255,128,0);
+    -fx-base: transparent;
+    -fx-background: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-color: rgb(32,74,135);
+    -fx-effect: null;
+}
+
+
+
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #66daff;
+}
+
+.Label{
+	-fx-text-fill: green;
+	-fx-effect: dropshadow(gaussian, grey , 1,1,1,1) ;
+ 
+     -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+
+              
+}
+
